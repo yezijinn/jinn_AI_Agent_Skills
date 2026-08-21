@@ -123,6 +123,9 @@ gh pr create --base <默认分支> --head <分支> --title "<标题>" --body "<�
 ## 15. 上传资产（强制纯英文文件名）
 - **文件名仅允许**：`a-zA-Z0-9._-`，严禁中文、全角符号。
 - 上传前校验每个文件名，若含非法字符则**中止**并提示重命名为纯英文。
+- **exe 可执行文件禁止直接上传**：下载可能被杀毒软件拦截，徒增用户麻烦。对于打包结果为单个 exe 的项目，必须先用 zip 压缩为标准 ZIP 格式，再上传 ZIP 文件。
+  - Windows：`powershell -Command "Compress-Archive -Path <exe> -DestinationPath <名称>.zip"` 或使用系统右键"压缩为 ZIP"。
+  - ZIP 文件名遵循纯英文命名（如 `myapp-v20260821-win64.zip`）。
 - 上传命令：`gh release upload v<YYYYMMDD> <file1> <file2> ...`
 - **中文名只能发布后在网页端二次重命名**，严禁在 `gh release upload` 阶段使用。
 
@@ -160,4 +163,4 @@ Validation: <检查结果>
 - 不丢弃改动、不提交密钥、不空提交、不 force push、不改写历史、不合并PR、不删分支/仓库、不覆盖已有 Release。
 - 显式暂存，审查差异，检查资产。
 - README 和 Release Notes **必须中英双语**。
-- Tag 强制 `vYYYYMMDD`，**Release title 必须与 tag 完全一致**，上传资产文件名纯英文。
+- Tag 强制 `vYYYYMMDD`，**Release title 必须与 tag 完全一致**，上传资产文件名纯英文，**exe 必须压缩为 ZIP 后上传**。
