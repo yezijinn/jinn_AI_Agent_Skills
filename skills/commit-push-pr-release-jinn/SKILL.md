@@ -114,10 +114,11 @@ gh pr create --base <默认分支> --head <分支> --title "<标题>" --body "<�
 **必须中英双语**。
 
 ## 14. 创建 Release
-```bash
-gh release create v<YYYYMMDD> --title "<标题（双语）>" --notes "<说明（双语）>"
-```
-若需草稿则加 `--draft`。不自动发布草稿。
+- **Release title 必须与 tag 完全一致**（如 tag 为 `v20260821`，title 也必须为 `v20260821`），禁止自定义标题。
+- ```bash
+  gh release create v<YYYYMMDD> --title "v<YYYYMMDD>" --notes "<说明（双语）>"
+  ```
+- 若需草稿则加 `--draft`。不自动发布草稿。
 
 ## 15. 上传资产（强制纯英文文件名）
 - **文件名仅允许**：`a-zA-Z0-9._-`，严禁中文、全角符号。
@@ -126,7 +127,7 @@ gh release create v<YYYYMMDD> --title "<标题（双语）>" --notes "<说明（
 - **中文名只能发布后在网页端二次重命名**，严禁在 `gh release upload` 阶段使用。
 
 ## 16. 验证 Release
-`gh release view v<YYYYMMDD>` 确认存在、标签、标题、说明、资产正确。
+`gh release view v<YYYYMMDD>` 确认存在、标签、**title 与 tag 完全一致**、说明、资产正确。
 
 ---
 
@@ -159,4 +160,4 @@ Validation: <检查结果>
 - 不丢弃改动、不提交密钥、不空提交、不 force push、不改写历史、不合并PR、不删分支/仓库、不覆盖已有 Release。
 - 显式暂存，审查差异，检查资产。
 - README 和 Release Notes **必须中英双语**。
-- Tag 强制 `vYYYYMMDD`，上传资产文件名纯英文。
+- Tag 强制 `vYYYYMMDD`，**Release title 必须与 tag 完全一致**，上传资产文件名纯英文。
