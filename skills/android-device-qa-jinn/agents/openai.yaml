@@ -1,0 +1,5 @@
+﻿interface:
+  display_name: "Android Device QA"
+  short_description: "真机 ADB 测试、UI 识别、诊断日志与干扰监控"
+  default_prompt: "使用 $android-device-qa 在真机上执行带诊断日志、截图、UI 校验和前台干扰监控的 App 测试。"
+
